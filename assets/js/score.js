@@ -43,7 +43,7 @@ function refreshDisplay() {
     multiplierBtn.value = 'Score multiplier: ' + localStorage.getItem('multiplier');
     multiplierBtn.disabled = isNotAffordable('multiplier');
     mCost.innerHTML = 'Cost ' + getCost(localStorage.getItem('multiplier')) + ' point(s)';
-    parseInt(localStorage.getItem('score')) >= 1000 ? bonusBtn.disabled = false : bonusBtn.disabled = true;
+    parseInt(localStorage.getItem('score'), 10) >= bonusPrice ? bonusBtn.disabled = false : bonusBtn.disabled = true;
 }
 
 
@@ -57,7 +57,6 @@ function refreshDisplay() {
 function isNotAffordable(upgradeName) {
     let score = parseInt(localStorage.getItem('score'), 10);
     let upgrade = parseInt(localStorage.getItem(upgradeName), 10);
-    let 
     if (score >= getCost(upgrade)) {
         return false;
     } else {
@@ -92,10 +91,12 @@ function autoClick() {
 function increaseScore() {
     let score = parseInt(localStorage.getItem('score'), 10);
     let multiplier = parseInt(localStorage.getItem('multiplier'), 10);
-    let gain = 1 * (multiplier + 1);
+    let bonus;
+    isBonusActive ? bonus = bonusMultiplier : bonus = 1;
+    let gain = 1 * (multiplier + 1) * bonus;
     score = score + gain;
     localStorage.setItem('score', score);
-    scoreArea.innerHTML = score;
+    refreshDisplay();
 }
 
 
@@ -107,9 +108,20 @@ function buyAuto() {
 
 
 function buyMultiplier() {
-
+    let score = parseInt(localStorage.getItem('score'), 10);
+    let multiplier = parseInt(localStorage.getItem('multiplier'), 10);
+    score = score - getCost(multiplier);
+    multiplier++;
+    localStorage.setItem("multiplier", multiplier);
+    localStorage.setItem("score", score);
+    refreshDisplay();
 }
 
+
+// ===================================================== Bonus button part
+function bonusDisp() {
+    bCost.innerHTML = "The bonus costs : " + bonusPrice;
+  }
 
 // ===================================================== Bonus button part
 function bonusTimeDisp(){
@@ -118,13 +130,11 @@ function bonusTimeDisp(){
 
 function buyBonus () {
 
-    if (isBonusActive){
+    if (isBonusActive && score>=bonusPrice){
 
       let score = parseInt(localStorage.getItem('score'), 10);
-      score -= bonusPrice;
       isBonusActive = true;
       bonusBtn.disabled = true;
-      score *= 2;
       localStorage.setItem('score', score);
 
       bonusTimer();
@@ -140,6 +150,6 @@ function bonusTimer() {
       if (bonusTime === 0) {
         bonusBtn.value ="200% score for 30s";  
       }
-    }  
-}
+    }
+  }
 // ===================================================== End of bonus button part

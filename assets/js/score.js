@@ -123,18 +123,6 @@ function bonusDisp() {
     bCost.innerHTML = "The bonus costs : " + bonusPrice;
   }
 
-
-function buyAuto() {
-
-}
-
-
-
-function buyMultiplier() {
-
-}
-
-
 // ===================================================== Bonus button part
 function bonusTimeDisp(){
     bonusBtn.value = "Bonus remaining time : "+ bonusTime + " seconds!"
@@ -142,7 +130,7 @@ function bonusTimeDisp(){
 
 function buyBonus () {
 
-    if (isBonusActive){
+    if (isBonusActive && score>=){
 
       let score = parseInt(localStorage.getItem('score'), 10);
       score -= bonusPrice;

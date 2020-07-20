@@ -1,13 +1,21 @@
-score = document.getElementById('score');
-click = document.getElementById('click');
-auto = document.getElementById('auto');
-multiplier = document.getElementById('multiplier');
-bonus = document.getElementById('bonus');
+let scoreArea = document.getElementById('score');
+let click = document.getElementById('click');
+
+let autoBtn = document.getElementById('auto');
+let aCost = document.getElementById('a-cost');
+
+let multiplierBtn = document.getElementById('multiplier');
+let mCost = document.getElementById('m-cost');
+
+let bonusBtn = document.getElementById('bonus');
+let bCost = document.getElementById('b-cost');
+
+
 
 click.addEventListener('click', increaseScore);
-auto.addEventListener('click', buyAuto);
-multiplier.addEventListener('click', buyMultiplier);
-bonus.addEventListener('click', buyBonus);
+autoBtn.addEventListener('click', buyAuto);
+multiplierBtn.addEventListener('click', buyMultiplier);
+bonusBtn.addEventListener('click', buyBonus);
 
 
 if (score.innerHTML === "") {
@@ -31,9 +39,17 @@ function increaseScore() {
 
 
 function buyAuto() {
+    let autoBuy = localStorage.getItem('auto');
+    for (let i = 1; i <= auto, i++){
+    refreshDisplay();
+    }
 
+    let autoBuy = localStorage.getItem('score');
+    getCost(x) 
+    for (let x = 1; x <= auto, x--){
+        refreshDisplay();
+    }
 }
-
 
 
 function buyMultiplier() {

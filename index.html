@@ -10,14 +10,28 @@
 	<link rel="stylesheet" href="./assets/css/style.css" type="text/css">
 </head>
 <body>
-    <section>
-        <div>
+    <body>
+		<section>
+			<div>
+                <label id="score" for="click">0</label>
+				<input type="button" value="click" id="click">
+			</div>
+		</section>
 
-        </div>
-        <div>
-            
-        </div>
-    </section>
+		<section>
+			<div>
+                <label id="a-cost" for="auto">0 points</label>
+				<input type="button" value="Autoclick/sec: 0" id="auto">
+            </div>
+            <div>
+                <label id="m-cost" for="multiplier">0 points</label>
+				<input type="button" value="Score multiplier: 1" id="multiplier">
+            </div>
+            <div>
+                <label id="b-cost" for="click">0 points</label>
+				<input type="button" value="200% score for 30s" id="bonus">
+			</div>
+		</section>    
 
     <script src="./assets/js/score.js" async></script>
 </body>

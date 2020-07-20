@@ -10,7 +10,6 @@ let mCost = document.getElementById('m-cost');
 let bonusBtn = document.getElementById('bonus');
 let bCost = document.getElementById('b-cost');
 
-let bonusMultiplier = 200;
 let bonusPrice = 1000;
 let bonusTime = 30000;
 let isBonusActive = false;
@@ -21,7 +20,7 @@ autoBtn.addEventListener('click', buyAuto);
 multiplierBtn.addEventListener('click', buyMultiplier);
 bonusBtn.addEventListener('click', bonusEnable);
 
-// Initialisation
+// Initialization
 if (window.localStorage.length === 0) {
     localStorage.setItem('score', '0');
     localStorage.setItem('auto', '0');
@@ -39,7 +38,7 @@ function refreshDisplay() {
     autoBtn.value = 'Autoclick/sec: ' + localStorage.getItem('auto');
     autoBtn.disabled = isNotAffordable('auto');
     aCost.innerHTML = 'Cost ' + getCost(localStorage.getItem('auto')) + ' point(s)';
-    multiplierBtn.value = 'Score multiplier: ' + localStorage.getItem('multiplier');
+    multiplierBtn.value = 'Bonus multiplier: ' + localStorage.getItem('multiplier');
     multiplierBtn.disabled = isNotAffordable('multiplier');
     mCost.innerHTML = 'Cost ' + getCost(localStorage.getItem('multiplier')) + ' point(s)';
     parseInt(localStorage.getItem('score'), 10) >= bonusPrice ? bonusBtn.disabled = false : bonusBtn.disabled = true;
@@ -91,7 +90,7 @@ function increaseScore() {
     let score = parseInt(localStorage.getItem('score'), 10);
     let multiplier = parseInt(localStorage.getItem('multiplier'), 10);
     let bonus;
-    isBonusActive ? bonus = bonusMultiplier : bonus = 1;
+    isBonusActive ? bonus = 2 : bonus = 1;
     let gain = 1 * (multiplier + 1) * bonus;
     score = score + gain;
     localStorage.setItem('score', score);
@@ -101,13 +100,25 @@ function increaseScore() {
 
 
 function buyAuto() {
-
+    let score = parseInt(localStorage.getItem('score'), 10);
+    let auto = parseInt(localStorage.getItem('auto'), 10);
+    score = score - getCost(auto);
+    auto++;
+    localStorage.setItem("auto", auto);
+    localStorage.setItem("score", score);
+    refreshDisplay();
 }
 
 
 
 function buyMultiplier() {
-
+    let score = parseInt(localStorage.getItem('score'), 10);
+    let multiplier = parseInt(localStorage.getItem('multiplier'), 10);
+    score = score - getCost(multiplier);
+    multiplier++;
+    localStorage.setItem("multiplier", multiplier);
+    localStorage.setItem("score", score);
+    refreshDisplay();
 }
 
 

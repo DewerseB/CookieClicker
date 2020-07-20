@@ -19,7 +19,7 @@ let isBonusActive = false;
 click.addEventListener('click', increaseScore);
 autoBtn.addEventListener('click', buyAuto);
 multiplierBtn.addEventListener('click', buyMultiplier);
-bonusBtn.addEventListener('click', bonusEnable);
+bonusBtn.addEventListener('click', buyBonus);
 
 // Initialisation
 if (window.localStorage.length === 0) {
@@ -29,6 +29,7 @@ if (window.localStorage.length === 0) {
 }
 refreshDisplay();
 setInterval(autoClick, 1000);
+setInterval(bonusTimer, 1000);
 
 
 /**
@@ -56,6 +57,7 @@ function refreshDisplay() {
 function isNotAffordable(upgradeName) {
     let score = parseInt(localStorage.getItem('score'), 10);
     let upgrade = parseInt(localStorage.getItem(upgradeName), 10);
+    let 
     if (score >= getCost(upgrade)) {
         return false;
     } else {
@@ -111,26 +113,30 @@ function buyMultiplier() {
 
 // ===================================================== Bonus button part
 
+function buyBonus () {
+    score -= bonusPrice;
+    isBonusActive = true;
+    bonusBtn.disabled = true;
+    score *= 200;
+
+    bonusTimeDisp();
+    refreshDisplay();
+    
+    if (!isBonusActive){
+        bonusBtn.disabled = false;
+    } else {
+        bonusBtn.disabled = true;
+    }
+   
+}
+
 function bonusTimeDisp(){
     bonusBtn.value = "Bonus remaining time : "+ bonusTime + " seconds!"
 }
 
 function bonusActivator() {
-    if (score>=bonusPrice && !isBonusActive){
-        bonusBtn.disabled = false;
-    } else {
-        bonusBtn.disabled = true;
-    }
+    
 }
-
-function bonusEnable() {
-    score -= bonusPrice;
-    isBonusActive = true;
-    bonusBtn.disabled = true;
-    //put here the display function ! 
-    //put the value of bonus here ! 
-    bonusTimeDisp();
-  }
   
 function bonusDisable() {
     bonusOn = false;
@@ -148,7 +154,4 @@ function bonusTimer() {
       }
     }
   }
-
-window.setInterval(bonusTimer, 1000);
-
 // ===================================================== End of bonus button part

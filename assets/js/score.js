@@ -1,13 +1,19 @@
-score = document.getElementById('score');
-click = document.getElementById('click');
-auto = document.getElementById('auto');
-multiplier = document.getElementById('multiplier');
-bonus = document.getElementById('bonus');
+let scoreArea = document.getElementById('score');
+let click = document.getElementById('click');
+
+let autoBtn = document.getElementById('auto');
+let aCost = document.getElementById('a-cost');
+
+let multiplierBtn = document.getElementById('multiplier');
+let mCost = document.getElementById('m-cost');
+
+let bonusBtn = document.getElementById('bonus');
+let bCost = document.getElementById('b-cost');
 
 click.addEventListener('click', increaseScore);
-auto.addEventListener('click', buyAuto);
-multiplier.addEventListener('click', buyMultiplier);
-bonus.addEventListener('click', buyBonus);
+autoBtn.addEventListener('click', buyAuto);
+multiplierBtn.addEventListener('click', buyMultiplier);
+bonusBtn.addEventListener('click', buyBonus);
 
 
 if (score.innerHTML === "") {
@@ -37,6 +43,8 @@ function buyAuto() {
 
 
 function buyMultiplier() {
+multiplier.addEventListener("click", function() {
+    multiplier.value = parseInt(multiplier.value) + 1;
 
 }
 

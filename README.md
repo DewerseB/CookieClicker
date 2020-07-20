@@ -17,9 +17,9 @@ Consolidation
 ## Objectifs:
 À la fin de ce défi, vous devriez avoir amélioré votre:
 
--Compétences JavaScript
--Compétences d'équipe
--Git conflict skills
+- Compétences JavaScript
+- Compétences d'équipe
+- Git conflict skills
 
 ## Mission:
 

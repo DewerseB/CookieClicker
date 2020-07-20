@@ -14,14 +14,14 @@ let bonusPrice = 1000;
 let bonusTime = 30;
 
 let isBonusActive = false;
-
+let interval;
 
 click.addEventListener('click', increaseScore);
 autoBtn.addEventListener('click', buyAuto);
 multiplierBtn.addEventListener('click', buyMultiplier);
 bonusBtn.addEventListener('click', buyBonus);
 
-// Initialisation
+// Initialization
 if (window.localStorage.length === 0) {
     localStorage.setItem('score', '0');
     localStorage.setItem('auto', '0');
@@ -29,7 +29,6 @@ if (window.localStorage.length === 0) {
 }
 refreshDisplay();
 setInterval(autoClick, 1000);
-setInterval(bonusTimer, 1000);
 
 
 /**
@@ -40,7 +39,7 @@ function refreshDisplay() {
     autoBtn.value = 'Autoclick/sec: ' + localStorage.getItem('auto');
     autoBtn.disabled = isNotAffordable('auto');
     aCost.innerHTML = 'Cost ' + getCost(localStorage.getItem('auto')) + ' point(s)';
-    multiplierBtn.value = 'Score multiplier: ' + localStorage.getItem('multiplier');
+    multiplierBtn.value = 'Bonus multiplier: ' + localStorage.getItem('multiplier');
     multiplierBtn.disabled = isNotAffordable('multiplier');
     mCost.innerHTML = 'Cost ' + getCost(localStorage.getItem('multiplier')) + ' point(s)';
     parseInt(localStorage.getItem('score'), 10) >= bonusPrice ? bonusBtn.disabled = false : bonusBtn.disabled = true;
@@ -68,12 +67,24 @@ function isNotAffordable(upgradeName) {
 /**
  * Calculates the cost of the next upgrade.
  * 
- * @param {number} x the number of upgrade owned
+ * @param {number} upgradeNb the number of upgrade owned
  * 
  * @return {number} the cost of the next upgrade
  */
-function getCost(x) {
-    return Math.pow(2, parseInt(x, 10));
+function getCost(upgradeNb) {
+    return Math.pow(2, parseInt(upgradeNb, 10));
+}
+
+
+/**
+ * Decreases the score by the number provided.
+ * 
+ * @param {number} x the price to pay
+ */
+function pay(x) {
+    let score = parseInt(localStorage.getItem('score'), 10);
+    score = score - x;
+    localStorage.setItem('score', score);
 }
 
 
@@ -92,7 +103,7 @@ function increaseScore() {
     let score = parseInt(localStorage.getItem('score'), 10);
     let multiplier = parseInt(localStorage.getItem('multiplier'), 10);
     let bonus;
-    isBonusActive ? bonus = bonusMultiplier : bonus = 1;
+    isBonusActive ? bonus = 2 : bonus = 1;
     let gain = 1 * (multiplier + 1) * bonus;
     score = score + gain;
     localStorage.setItem('score', score);
@@ -100,54 +111,39 @@ function increaseScore() {
 }
 
 
-
 function buyAuto() {
-
-}
-
-
-
-function buyMultiplier() {
-    let score = parseInt(localStorage.getItem('score'), 10);
-    let multiplier = parseInt(localStorage.getItem('multiplier'), 10);
-    score = score - getCost(multiplier);
-    multiplier++;
-    localStorage.setItem("multiplier", multiplier);
-    localStorage.setItem("score", score);
+    let auto = parseInt(localStorage.getItem('auto'), 10);
+    pay(getCost(auto));
+    auto++;
+    localStorage.setItem("auto", auto);
     refreshDisplay();
 }
 
 
-// ===================================================== Bonus button part
-function bonusDisp() {
-    bCost.innerHTML = "The bonus costs : " + bonusPrice;
-  }
-
-// ===================================================== Bonus button part
-function bonusTimeDisp(){
-    bonusBtn.value = "Bonus remaining time : "+ bonusTime + " seconds!"
+function buyMultiplier() {
+    let multiplier = parseInt(localStorage.getItem('multiplier'), 10);
+    pay(getCost(multiplier));
+    multiplier++;
+    localStorage.setItem("multiplier", multiplier);
+    refreshDisplay();
 }
 
-function buyBonus () {
 
-    if (isBonusActive && score>=bonusPrice){
-      isBonusActive = true;
-      bonusBtn.disabled = true;
-      localStorage.setItem('score', score);
-
-      bonusTimer();
-      refreshDisplay();
-    }
+function buyBonus() {
+    pay(bonusPrice);
+    isBonusActive = true;
+    refreshDisplay();
+    interval = setInterval(bonusTimer, 1000);
 }
 
 function bonusTimer() {
-    if (!isBonusActive) {
-      --bonusTime;
-      bonusTimeDisp();
-
-      if (bonusTime === 0) {
-        bonusBtn.value ="200% score for 30s";  
-      }
+    if (bonusTime > 0) {
+        bonusTime--;
+        bonusBtn.value = bonusTime + " seconds!"
+    } else {
+        bonusTime = 30;
+        isBonusActive = false;
+        clearInterval(interval);
+        bonusBtn.value = "200% score for 30s";
     }
-  }
-// ===================================================== End of bonus button part
+}

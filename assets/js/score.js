@@ -41,8 +41,8 @@ function increaseScore() {
 function buyAuto() {
     let autoBuy = localStorage.getItem('auto');
     autoBuy += 1;
-    refreshDisplay();
     localStorage.setItem('auto' ,autoBuy);
+    refreshDisplay();
     
     }
 

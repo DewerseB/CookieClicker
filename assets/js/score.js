@@ -152,6 +152,6 @@ function bonusTimer() {
     }
   }
 
-bonusInterval = window.setInterval(bonusTimer, 1000);
+window.setInterval(bonusTimer, 1000);
 
 // ===================================================== End of bonus button part

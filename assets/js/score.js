@@ -10,7 +10,6 @@ let mCost = document.getElementById('m-cost');
 let bonusBtn = document.getElementById('bonus');
 let bCost = document.getElementById('b-cost');
 
-let bonusMultiplier = 200;
 let bonusPrice = 1000;
 let bonusTime = 30;
 
@@ -20,7 +19,7 @@ let isBonusActive = false;
 click.addEventListener('click', increaseScore);
 autoBtn.addEventListener('click', buyAuto);
 multiplierBtn.addEventListener('click', buyMultiplier);
-bonusBtn.addEventListener('click', bonusEnable);
+bonusBtn.addEventListener('click', buyBonus);
 
 // Initialisation
 if (window.localStorage.length === 0) {
@@ -30,6 +29,7 @@ if (window.localStorage.length === 0) {
 }
 refreshDisplay();
 setInterval(autoClick, 1000);
+setInterval(bonusTimer, 1000);
 
 
 /**
@@ -123,44 +123,47 @@ function bonusDisp() {
     bCost.innerHTML = "The bonus costs : " + bonusPrice;
   }
 
+
+function buyAuto() {
+
+}
+
+
+
+function buyMultiplier() {
+
+}
+
+
+// ===================================================== Bonus button part
 function bonusTimeDisp(){
     bonusBtn.value = "Bonus remaining time : "+ bonusTime + " seconds!"
 }
 
-function bonusActivator() {
-    if (score>=bonusPrice && !isBonusActive){
-        bonusBtn.disabled = false;
-    } else {
-        bonusBtn.disabled = true;
+function buyBonus () {
+
+    if (isBonusActive){
+
+      let score = parseInt(localStorage.getItem('score'), 10);
+      score -= bonusPrice;
+      isBonusActive = true;
+      bonusBtn.disabled = true;
+      score *= 2;
+      localStorage.setItem('score', score);
+
+      bonusTimer();
+      refreshDisplay();
     }
 }
 
-function bonusEnable() {
-    score -= bonusPrice;
-    isBonusActive = true;
-    bonusBtn.disabled = true;
-    //put here the display function ! 
-    //put the value of bonus here ! 
-    bonusTimeDisp();
-  }
-  
-function bonusDisable() {
-    bonusOn = false;
-    bonusTime = 30;
-    //should the click value = multiplier?
-    bonusDisp();
-  }
-
 function bonusTimer() {
-    if (isBonusActive) {
+    if (!isBonusActive) {
       --bonusTime;
       bonusTimeDisp();
+
       if (bonusTime === 0) {
-        bonusDisable();
+        bonusBtn.value ="200% score for 30s";  
       }
     }
   }
-
-window.setInterval(bonusTimer, 1000);
-
 // ===================================================== End of bonus button part

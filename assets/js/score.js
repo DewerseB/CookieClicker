@@ -128,7 +128,6 @@ function buyBonus() {
     interval = setInterval(bonusTimer, 1000);
 }
 
-
 function bonusTimer() {
     if (bonusTime > 0) {
         bonusTime--;

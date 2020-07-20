@@ -14,7 +14,7 @@ let bonusPrice = 1000;
 let bonusTime = 30;
 
 let isBonusActive = false;
-
+let interval;
 
 click.addEventListener('click', increaseScore);
 autoBtn.addEventListener('click', buyAuto);
@@ -29,7 +29,6 @@ if (window.localStorage.length === 0) {
 }
 refreshDisplay();
 setInterval(autoClick, 1000);
-setInterval(bonusTimer, 1000);
 
 
 /**
@@ -68,12 +67,24 @@ function isNotAffordable(upgradeName) {
 /**
  * Calculates the cost of the next upgrade.
  * 
- * @param {number} x the number of upgrade owned
+ * @param {number} upgradeNb the number of upgrade owned
  * 
  * @return {number} the cost of the next upgrade
  */
-function getCost(x) {
-    return Math.pow(2, parseInt(x, 10));
+function getCost(upgradeNb) {
+    return Math.pow(2, parseInt(upgradeNb, 10));
+}
+
+
+/**
+ * Decreases the score by the number provided.
+ * 
+ * @param {number} x the price to pay
+ */
+function pay(x) {
+    let score = parseInt(localStorage.getItem('score'), 10);
+    score = score - x;
+    localStorage.setItem('score', score);
 }
 
 
@@ -100,76 +111,40 @@ function increaseScore() {
 }
 
 
-
 function buyAuto() {
-    let score = parseInt(localStorage.getItem('score'), 10);
     let auto = parseInt(localStorage.getItem('auto'), 10);
-    score = score - getCost(auto);
+    pay(getCost(auto));
     auto++;
     localStorage.setItem("auto", auto);
-    localStorage.setItem("score", score);
     refreshDisplay();
 }
 
 
-
 function buyMultiplier() {
-    let score = parseInt(localStorage.getItem('score'), 10);
     let multiplier = parseInt(localStorage.getItem('multiplier'), 10);
-    score = score - getCost(multiplier);
+    pay(getCost(multiplier));
     multiplier++;
     localStorage.setItem("multiplier", multiplier);
-    localStorage.setItem("score", score);
     refreshDisplay();
 }
 
 
-// ===================================================== Bonus button part
-function bonusDisp() {
-    bCost.innerHTML = "The bonus costs : " + bonusPrice;
-  }
-
-
-function buyAuto() {
-
+function buyBonus() {
+    pay(bonusPrice);
+    isBonusActive = true;
+    refreshDisplay();
+    interval = setInterval(bonusTimer, 1000);
 }
 
-
-
-function buyMultiplier() {
-
-}
-
-
-// ===================================================== Bonus button part
-function bonusTimeDisp(){
-    bonusBtn.value = "Bonus remaining time : "+ bonusTime + " seconds!"
-}
-
-function buyBonus () {
-
-    if (isBonusActive){
-
-      let score = parseInt(localStorage.getItem('score'), 10);
-      score -= bonusPrice;
-      isBonusActive = true;
-      bonusBtn.disabled = true;
-      score *= 2;
-      localStorage.setItem('score', score);
-
-      bonusTimer();
-      refreshDisplay();
-    }
-}
 
 function bonusTimer() {
-    if (!isBonusActive) {
-      --bonusTime;
-      bonusTimeDisp();
-
-      if (bonusTime === 0) {
-        bonusBtn.value ="200% score for 30s";  
-      }
+    if (bonusTime > 0) {
+        bonusTime--;
+        bonusBtn.value = bonusTime + " seconds!"
+    } else {
+        bonusTime = 30;
+        isBonusActive = false;
+        clearInterval(interval);
+        bonusBtn.value = "200% score for 30s";
     }
-  }
-// ===================================================== End of bonus button part
+}

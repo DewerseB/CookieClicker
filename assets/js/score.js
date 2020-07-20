@@ -42,6 +42,8 @@ function buyAuto() {
     let autoBuy = localStorage.getItem('auto');
     autoBuy += 1;
     localStorage.setItem('auto' ,autoBuy);
+    autoBuy = autoBuy - getCost('auto');
+    auto++;
     refreshDisplay();    
     }
 

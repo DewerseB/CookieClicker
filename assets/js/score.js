@@ -15,7 +15,10 @@ localStorage.setItem('score', '0');
 localStorage.setItem('auto', '0');
 localStorage.setItem('multiplier', '0');
 
-var bonusPrice
+let bonusPrice = 1000;
+let bonusTime = 30000;
+
+let isBonusActive = false;
 
 
 function getCost(x) {
@@ -23,6 +26,51 @@ function getCost(x) {
 }
 
 function bonusDisp() {
-    bonusBtn.value = "The bonus costs : " + bCost;
+    bCost.innerHTML = "The bonus costs : " + bonusPrice;
+  }
+
+function bonusTimeDisp(){
+    bonusBtn.value = "Bonus remaining time : "+ bonusTime + " seconds!"
+}
+
+function bonusActivator() {
+    if (score>=bonusPrice && isBonusActive){
+        bonusBtn.disabled = false;
+    } else {
+        bonusBtn.disabled = true;
+    }
+}
+
+function bonusEnable() {
+    score -= bonusPrice;
+    isBonusActive = true;
+    bonusBtn.disabled = true;
+    //put here the display function ! 
+    //put the value of bonus here ! 
+    bonusTimeDisp();
   }
   
+  function bonusDisable() {
+    bonusOn = false;
+    bonusTime = 30;
+    //should the click value = multiplier?
+    bonusDisp();
+  }
+
+function bonusTime() {
+    if (isBonusActive) {
+      --bonusTime;
+      bonusTimeDisp();
+      if (bonusTime === 0) {
+        disableBonus();
+      }
+    }
+  }
+
+
+bonusDisp();
+
+click.addEventListener('click', increaseScore);
+autoBtn.addEventListener('click', buyAuto);
+multiplierBtn.addEventListener('click', buyMultiplier);
+bonusBtn.addEventListener('click', buyBonus);

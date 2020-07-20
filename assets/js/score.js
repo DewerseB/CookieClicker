@@ -29,7 +29,7 @@ if (window.localStorage.length === 0) {
 }
 refreshDisplay();
 setInterval(autoClick, 1000);
-setInterval(bonusTimer, 1000);
+
 
 
 /**
@@ -119,11 +119,6 @@ function buyMultiplier() {
 
 
 // ===================================================== Bonus button part
-function bonusDisp() {
-    bCost.innerHTML = "The bonus costs : " + bonusPrice;
-  }
-
-// ===================================================== Bonus button part
 function bonusTimeDisp(){
     bonusBtn.value = "Bonus remaining time : "+ bonusTime + " seconds!"
 }
@@ -131,11 +126,9 @@ function bonusTimeDisp(){
 function buyBonus () {
 
     if (isBonusActive && score>=bonusPrice){
-
-      let score = parseInt(localStorage.getItem('score'), 10);
       isBonusActive = true;
       bonusBtn.disabled = true;
-      localStorage.setItem('score', score);
+      
 
       bonusTimer();
       refreshDisplay();
@@ -152,4 +145,5 @@ function bonusTimer() {
       }
     }
   }
+  setInterval(bonusTimer, 1000);
 // ===================================================== End of bonus button part

@@ -130,13 +130,9 @@ function bonusTimeDisp(){
 
 function buyBonus () {
 
-    if (isBonusActive && score>=){
-
-      let score = parseInt(localStorage.getItem('score'), 10);
-      score -= bonusPrice;
+    if (isBonusActive && score>=bonusPrice){
       isBonusActive = true;
       bonusBtn.disabled = true;
-      score *= 2;
       localStorage.setItem('score', score);
 
       bonusTimer();

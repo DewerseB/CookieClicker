@@ -1,20 +1,28 @@
-localStorage.setItem("scoring","");
-localStorage.setItem("clicking","");
+let score = document.getElementById('score');
+let click = document.getElementById('click');
 
-var score = 0;
-var clickValue = 1;
-var multiplier = 1;
+let auto = document.getElementById('auto');
+let aCost = document.getElementById('a-cost');
 
-function scoreDisplay (){
-    document.getElementById('score-display').innerHTML = score;
+let multiplier = document.getElementById('multiplier');
+let mCost = document.getElementById('m-cost');
+
+let bonus = document.getElementById('bonus');
+let bCost = document.getElementById('b-cost');
+
+
+localStorage.setItem('score', '0');
+localStorage.setItem('auto', '0');
+localStorage.setItem('multiplier', '0');
+
+var bonusPrice
+
+
+function getCost(x) {
+    return Math.pow(2, x);
 }
 
-function multiplierDisplay (){
-    
-}
-
-function cookieCount() {
-    score += clickValue;
-}
-
-document.getElementById('clicker').addEventListener('click', cookieCount); 
+function bonusDisp() {
+    bonus.value = "" + bonusCost + ')';
+  }
+  

@@ -39,14 +39,14 @@ function increaseScore() {
 
 
 function buyAuto() {
-    let autoBuy = localStorage.getItem('auto');
-    autoBuy += 1;
-    localStorage.setItem('auto' ,autoBuy);
-    autoBuy = autoBuy - getCost('auto');
+    let score = parseInt(localStorage.getItem('score'), 10);
+    let auto = parseInt(localStorage.getItem('auto'), 10);
+    score = score - getCost(auto);
     auto++;
-    refreshDisplay();    
-    }
-
+    localStorage.setItem("auto", auto);
+    localStorage.setItem("score", score);
+    refreshDisplay();
+}
 
 
 function buyMultiplier() {

@@ -1,0 +1,20 @@
+section.score {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 5rem;
+}
+
+section.upgrades {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 5rem;
+}
+
+div.btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

@@ -4,7 +4,7 @@
 - Deadline 22/07/2020 17h
 - Projet publé sur la page: ()
 
-#Type de défi: 
+# Type de défi: 
 Consolidation
 
 ## Collaborateurs: 

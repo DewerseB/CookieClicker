@@ -34,7 +34,7 @@ function bonusTimeDisp(){
 }
 
 function bonusActivator() {
-    if (score>=bonusPrice && isBonusActive){
+    if (score>=bonusPrice && !isBonusActive){
         bonusBtn.disabled = false;
     } else {
         bonusBtn.disabled = true;
@@ -70,7 +70,7 @@ function bonusTimer() {
 
 bonusDisp();
 
-bonusInterval = window.setInterval(bonusTimer, 30000);
+bonusInterval = window.setInterval(bonusTimer, 1000);
 
 click.addEventListener('click', increaseScore);
 autoBtn.addEventListener('click', buyAuto);

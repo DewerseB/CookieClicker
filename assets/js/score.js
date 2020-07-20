@@ -10,6 +10,7 @@ let mCost = document.getElementById('m-cost');
 let bonusBtn = document.getElementById('bonus');
 let bCost = document.getElementById('b-cost');
 
+let bonusMultiplier = 200;
 let bonusPrice = 1000;
 let bonusTime = 30;
 
@@ -42,7 +43,7 @@ function refreshDisplay() {
     multiplierBtn.value = 'Score multiplier: ' + localStorage.getItem('multiplier');
     multiplierBtn.disabled = isNotAffordable('multiplier');
     mCost.innerHTML = 'Cost ' + getCost(localStorage.getItem('multiplier')) + ' point(s)';
-    parseInt(localStorage.getItem('score')) >= 1000 ? bonusBtn.disabled = false : bonusBtn.disabled = true;
+    parseInt(localStorage.getItem('score'), 10) >= bonusPrice ? bonusBtn.disabled = false : bonusBtn.disabled = true;
 }
 
 
@@ -90,10 +91,12 @@ function autoClick() {
 function increaseScore() {
     let score = parseInt(localStorage.getItem('score'), 10);
     let multiplier = parseInt(localStorage.getItem('multiplier'), 10);
-    let gain = 1 * (multiplier + 1);
+    let bonus;
+    isBonusActive ? bonus = bonusMultiplier : bonus = 1;
+    let gain = 1 * (multiplier + 1) * bonus;
     score = score + gain;
     localStorage.setItem('score', score);
-    scoreArea.innerHTML = score;
+    refreshDisplay();
 }
 
 

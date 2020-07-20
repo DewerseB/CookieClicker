@@ -1,13 +1,13 @@
-let score = document.getElementById('score');
+let scoreArea = document.getElementById('score');
 let click = document.getElementById('click');
 
-let auto = document.getElementById('auto');
+let autoBtn = document.getElementById('auto');
 let aCost = document.getElementById('a-cost');
 
-let multiplier = document.getElementById('multiplier');
+let multiplierBtn = document.getElementById('multiplier');
 let mCost = document.getElementById('m-cost');
 
-let bonus = document.getElementById('bonus');
+let bonusBtn = document.getElementById('bonus');
 let bCost = document.getElementById('b-cost');
 
 
@@ -23,6 +23,6 @@ function getCost(x) {
 }
 
 function bonusDisp() {
-    bonus.value = "" + bonusCost + ')';
+    bonusBtn.value = "The bonus costs : " + bCost;
   }
   

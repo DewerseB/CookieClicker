@@ -10,7 +10,7 @@ function scoreDisplay (){
 }
 
 function multiplierDisplay (){
-    document.getElementById('multiplier').innerHTML = score;
+    
 }
 
 function cookieCount() {

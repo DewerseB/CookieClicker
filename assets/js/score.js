@@ -40,16 +40,12 @@ function increaseScore() {
 
 function buyAuto() {
     let autoBuy = localStorage.getItem('auto');
-    for (let i = 1; i <= auto, i++){
+    autoBuy += 1;
     refreshDisplay();
+    localStorage.setItem('auto' ,autoBuy);
+    
     }
 
-    let autoBuy = localStorage.getItem('score');
-    getCost(x) 
-    for (let x = 1; x <= auto, x--){
-        refreshDisplay();
-    }
-}
 
 
 function buyMultiplier() {

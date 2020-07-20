@@ -50,19 +50,19 @@ function bonusEnable() {
     bonusTimeDisp();
   }
   
-  function bonusDisable() {
+function bonusDisable() {
     bonusOn = false;
     bonusTime = 30;
     //should the click value = multiplier?
     bonusDisp();
   }
 
-function bonusTime() {
+function bonusTimer() {
     if (isBonusActive) {
       --bonusTime;
       bonusTimeDisp();
       if (bonusTime === 0) {
-        disableBonus();
+        bonusDisable();
       }
     }
   }
@@ -70,7 +70,9 @@ function bonusTime() {
 
 bonusDisp();
 
+bonusInterval = window.setInterval(bonusTimer, 30000);
+
 click.addEventListener('click', increaseScore);
 autoBtn.addEventListener('click', buyAuto);
 multiplierBtn.addEventListener('click', buyMultiplier);
-bonusBtn.addEventListener('click', buyBonus);
+bonusBtn.addEventListener('click', bonusEnable);

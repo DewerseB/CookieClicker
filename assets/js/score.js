@@ -112,6 +112,10 @@ function buyMultiplier() {
 
 
 // ===================================================== Bonus button part
+function bonusTimeDisp(){
+    bonusBtn.value = "Bonus remaining time : "+ bonusTime + " seconds!"
+}
+  
 
 function buyBonus () {
     score -= bonusPrice;
@@ -121,7 +125,7 @@ function buyBonus () {
 
     bonusTimeDisp();
     refreshDisplay();
-    
+
     if (!isBonusActive){
         bonusBtn.disabled = false;
     } else {
@@ -130,14 +134,6 @@ function buyBonus () {
    
 }
 
-function bonusTimeDisp(){
-    bonusBtn.value = "Bonus remaining time : "+ bonusTime + " seconds!"
-}
-
-function bonusActivator() {
-    
-}
-  
 function bonusDisable() {
     bonusOn = false;
     bonusTime = 30;

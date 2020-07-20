@@ -12,12 +12,14 @@ let bCost = document.getElementById('b-cost');
 
 let bonusPrice = 1000;
 let bonusTime = 30000;
+
 let isBonusActive = false;
+
 
 click.addEventListener('click', increaseScore);
 autoBtn.addEventListener('click', buyAuto);
 multiplierBtn.addEventListener('click', buyMultiplier);
-bonusBtn.addEventListener('click', buyBonus);
+bonusBtn.addEventListener('click', bonusEnable);
 
 // Initialisation
 if (window.localStorage.length === 0) {
@@ -109,7 +111,49 @@ function buyMultiplier() {
 }
 
 
+// ===================================================== Bonus button part
+function bonusDisp() {
+    bCost.innerHTML = "The bonus costs : " + bonusPrice;
+  }
 
-function buyBonus() {
-
+function bonusTimeDisp(){
+    bonusBtn.value = "Bonus remaining time : "+ bonusTime + " seconds!"
 }
+
+function bonusActivator() {
+    if (score>=bonusPrice && !isBonusActive){
+        bonusBtn.disabled = false;
+    } else {
+        bonusBtn.disabled = true;
+    }
+}
+
+function bonusEnable() {
+    score -= bonusPrice;
+    isBonusActive = true;
+    bonusBtn.disabled = true;
+    //put here the display function ! 
+    //put the value of bonus here ! 
+    bonusTimeDisp();
+  }
+  
+function bonusDisable() {
+    bonusOn = false;
+    bonusTime = 30;
+    //should the click value = multiplier?
+    bonusDisp();
+  }
+
+function bonusTimer() {
+    if (isBonusActive) {
+      --bonusTime;
+      bonusTimeDisp();
+      if (bonusTime === 0) {
+        bonusDisable();
+      }
+    }
+  }
+
+bonusInterval = window.setInterval(bonusTimer, 1000);
+
+// ===================================================== End of bonus button part

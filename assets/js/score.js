@@ -11,7 +11,7 @@ let bonusBtn = document.getElementById('bonus');
 let bCost = document.getElementById('b-cost');
 
 let bonusPrice = 1000;
-let bonusTime = 30000;
+let bonusTime = 30;
 
 let isBonusActive = false;
 

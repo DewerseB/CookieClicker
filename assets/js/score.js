@@ -115,39 +115,31 @@ function buyMultiplier() {
 function bonusTimeDisp(){
     bonusBtn.value = "Bonus remaining time : "+ bonusTime + " seconds!"
 }
-  
 
 function buyBonus () {
-    score -= bonusPrice;
-    isBonusActive = true;
-    bonusBtn.disabled = true;
-    score *= 200;
 
-    bonusTimeDisp();
-    refreshDisplay();
+    if (isBonusActive){
 
-    if (!isBonusActive){
-        bonusBtn.disabled = false;
-    } else {
-        bonusBtn.disabled = true;
+      let score = parseInt(localStorage.getItem('score'), 10);
+      score -= bonusPrice;
+      isBonusActive = true;
+      bonusBtn.disabled = true;
+      score *= 2;
+      localStorage.setItem('score', score);
+
+      bonusTimer();
+      refreshDisplay();
     }
-   
 }
 
-function bonusDisable() {
-    bonusOn = false;
-    bonusTime = 30;
-    //should the click value = multiplier?
-    bonusDisp();
-  }
-
 function bonusTimer() {
-    if (isBonusActive) {
+    if (!isBonusActive) {
       --bonusTime;
       bonusTimeDisp();
+
       if (bonusTime === 0) {
-        bonusDisable();
+        bonusBtn.value ="200% score for 30s";  
       }
-    }
-  }
+    }  
+}
 // ===================================================== End of bonus button part

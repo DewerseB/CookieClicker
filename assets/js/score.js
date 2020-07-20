@@ -1,22 +1,14 @@
-let scoreArea = document.getElementById('score');
-let click = document.getElementById('click');
-
+let clickBtn = document.getElementById('click');
 let autoBtn = document.getElementById('auto');
-let aCost = document.getElementById('a-cost');
-
 let multiplierBtn = document.getElementById('multiplier');
-let mCost = document.getElementById('m-cost');
-
 let bonusBtn = document.getElementById('bonus');
-let bCost = document.getElementById('b-cost');
 
 let bonusPrice = 1000;
 let bonusTime = 30;
-
 let isBonusActive = false;
 let interval;
 
-click.addEventListener('click', increaseScore);
+clickBtn.addEventListener('click', increaseScore);
 autoBtn.addEventListener('click', buyAuto);
 multiplierBtn.addEventListener('click', buyMultiplier);
 bonusBtn.addEventListener('click', buyBonus);
@@ -35,13 +27,13 @@ setInterval(autoClick, 1000);
  * Updates all the values on the page.
  */
 function refreshDisplay() {
-    scoreArea.innerHTML = localStorage.getItem('score');
+    document.getElementById('score').innerHTML = localStorage.getItem('score');
     autoBtn.value = 'Autoclick/sec: ' + localStorage.getItem('auto');
     autoBtn.disabled = isNotAffordable('auto');
-    aCost.innerHTML = 'Cost ' + getCost(localStorage.getItem('auto')) + ' point(s)';
+    document.getElementById('a-cost').innerHTML = 'Cost ' + getCost(localStorage.getItem('auto')) + ' point(s)';
     multiplierBtn.value = 'Bonus multiplier: ' + localStorage.getItem('multiplier');
     multiplierBtn.disabled = isNotAffordable('multiplier');
-    mCost.innerHTML = 'Cost ' + getCost(localStorage.getItem('multiplier')) + ' point(s)';
+    document.getElementById('m-cost').innerHTML = 'Cost ' + getCost(localStorage.getItem('multiplier')) + ' point(s)';
     parseInt(localStorage.getItem('score'), 10) >= bonusPrice ? bonusBtn.disabled = false : bonusBtn.disabled = true;
 }
 
@@ -49,7 +41,7 @@ function refreshDisplay() {
 /**
  * Check if an upgrade is not affordable.
  * 
- * @param {*} upgradeName the name of the upgrade
+ * @param {string} upgradeName the name of the upgrade
  * 
  * @return {boolean}
  */

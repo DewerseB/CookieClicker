@@ -108,7 +108,13 @@ function buyAuto() {
 
 
 function buyMultiplier() {
-
+    let score = parseInt(localStorage.getItem('score'), 10);
+    let multiplier = parseInt(localStorage.getItem('multiplier'), 10);
+    score = score - getCost(multiplier);
+    multiplier++;
+    localStorage.setItem("multiplier", multiplier);
+    localStorage.setItem("score", score);
+    refreshDisplay();
 }
 
 

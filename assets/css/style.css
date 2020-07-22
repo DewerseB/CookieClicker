@@ -28,6 +28,14 @@ body {
     padding: 0.5rem 1rem;
 }
 
+  }
+  
+  @keyframes rotation {
+    from { transform: rotate(0deg);}
+
+    to {transform: rotate(359deg);}
+  }
+  
 section.score {
     display: flex;
     flex-direction: column;
@@ -61,17 +69,23 @@ div {
     background-color: #ff0081;
     color: white;
     width: 10rem;
-    padding: 0.3rem 0;
+    border-radius: 0.5rem;
+    padding: 0.4rem 0;
 }
 
 .btn:active {
     transform: scale(1.1);
 }
 
+.btn:disabled {
+    background-color: #990040;
+    color: grey;
+}
+
 .cost {
-    background-color: #ff0081;
+    background-color: #ff0080bd;
     color: white;
-    width: 9.8rem;
+    width: 9rem;
     text-align: center;
     padding: 0.2rem 0;
     border: 0.05rem solid black;
@@ -79,6 +93,12 @@ div {
     border-radius: 0 0 0.5rem 0.5rem;
 }
 
-.bonusimg {
-    margin: 2rem;
-}
+.lic-anim{
+    animation: scaling 1.5s alternate infinite ease-in;
+ }
+
+ @keyframes scaling {
+    from  {transform: scale(1);}
+
+    to {transform: scale(1.2);}
+  }

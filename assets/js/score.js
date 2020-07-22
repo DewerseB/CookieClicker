@@ -124,6 +124,8 @@ function buyMultiplier() {
 function buyBonus() {
     pay(bonusPrice);
     isBonusActive = true;
+    bonusBtn.disabled = true;
+    document.getElementById("bonus-img").className = "lic-anim";
     refreshDisplay();
     interval = setInterval(bonusTimer, 1000);
 }
@@ -135,6 +137,8 @@ function bonusTimer() {
     } else {
         bonusTime = 30;
         isBonusActive = false;
+        bonusBtn.disabled = false;
+        document.getElementById("bonus-img").classList.remove("lic-anim");
         clearInterval(interval);
         bonusBtn.value = "200% score for 30s";
         refreshDisplay();

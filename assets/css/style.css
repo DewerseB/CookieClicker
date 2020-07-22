@@ -13,12 +13,9 @@ body {
   }
   
   @keyframes rotation {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(359deg);
-    }
+    from { transform: rotate(0deg);}
+
+    to {transform: rotate(359deg);}
   }
   
 section.score {
@@ -41,3 +38,13 @@ div.btn {
     justify-content: center;
     align-items: center;
 }
+
+.lic-anim{
+    animation: scaling 1.5s alternate infinite ease-in;
+ }
+
+ @keyframes scaling {
+    from  {transform: scale(1);}
+
+    to {transform: scale(1.2);}
+  }

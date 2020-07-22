@@ -67,6 +67,7 @@ div {
     width: 10rem;
     border-radius: 0.5rem;
     padding: 0.4rem 0;
+    cursor: pointer;
     outline: none;
 }
 
@@ -106,6 +107,7 @@ div {
     color: white;
     border-radius: 0.5rem;
     padding: 0.4rem;
+    cursor: pointer;
     outline: none;
 }
 

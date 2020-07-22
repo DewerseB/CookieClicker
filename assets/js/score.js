@@ -19,7 +19,6 @@ if (window.localStorage.length === 0) {
     localStorage.setItem('auto', '0');
     localStorage.setItem('multiplier', '0');
 }
-bonusBtn.disabled = false;
 refreshDisplay();
 setInterval(autoClick, 1000);
 
@@ -31,11 +30,11 @@ function refreshDisplay() {
     document.getElementById('score').innerHTML = localStorage.getItem('score');
     autoBtn.value = 'Autoclick/sec: ' + localStorage.getItem('auto');
     autoBtn.disabled = isNotAffordable('auto');
-    document.getElementById('a-cost').innerHTML = 'Cost ' + getCost(localStorage.getItem('auto')) + ' point(s)';
+    document.getElementById('a-cost').innerHTML = getCost(localStorage.getItem('auto')) + ' point(s)';
     multiplierBtn.value = 'Bonus multiplier: ' + localStorage.getItem('multiplier');
     multiplierBtn.disabled = isNotAffordable('multiplier');
-    document.getElementById('m-cost').innerHTML = 'Cost ' + getCost(localStorage.getItem('multiplier')) + ' point(s)';
-    parseInt(localStorage.getItem('score'), 10) >= bonusPrice ? bonusBtn.disabled = false : bonusBtn.disabled = true;
+    document.getElementById('m-cost').innerHTML = getCost(localStorage.getItem('multiplier')) + ' point(s)';
+    (parseInt(localStorage.getItem('score'), 10) >= bonusPrice && !isBonusActive) ? bonusBtn.disabled = false : bonusBtn.disabled = true;
 }
 
 
@@ -134,7 +133,7 @@ function buyBonus() {
 function bonusTimer() {
     if (bonusTime > 0) {
         bonusTime--;
-        bonusBtn.value = bonusTime + " seconds!"
+        bonusBtn.value = bonusTime + " seconds remaining!"
     } else {
         bonusTime = 30;
         isBonusActive = false;
@@ -142,5 +141,6 @@ function bonusTimer() {
         document.getElementById("bonus-img").classList.remove("lic-anim");
         clearInterval(interval);
         bonusBtn.value = "200% score for 30s";
+        refreshDisplay();
     }
 }

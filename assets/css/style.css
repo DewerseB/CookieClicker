@@ -10,42 +10,75 @@ body {
 
 .logo:active {
     animation: rotation 0.1s infinite linear;
-  }
-  
-  @keyframes rotation {
+}
+@keyframes rotation {
     from {
       transform: rotate(0deg);
     }
     to {
-      transform: rotate(359deg);
+      transform: rotate(360deg);
     }
-  }
-  
+}
+
+.scoreArea {
+    background-color: rgba(0, 250, 250, .5);
+    color: #ff0081;
+    border-radius: 0.5rem;
+    font-size: 3rem;
+    padding: 0.5rem 1rem;
+}
+
 section.score {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 2rem;
+    margin: 1rem;
 }
 
 section.upgrades {
     display: flex;
     justify-content: space-evenly;
-    margin: 2rem;
+    margin: 1rem;
 }
 
-div.btn {
+section.bonus {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+}
+
+div {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-label.cost {
-    background-color: white;
-    padding: 0.2rem;
+.btn {
+    background-color: #ff0081;
+    color: white;
+    width: 10rem;
+    padding: 0.3rem 0;
+}
+
+.btn:active {
+    transform: scale(1.1);
+}
+
+.cost {
+    background-color: #ff0081;
+    color: white;
+    width: 9.8rem;
+    text-align: center;
+    padding: 0.2rem 0;
     border: 0.05rem solid black;
     border-top: none;
     border-radius: 0 0 0.5rem 0.5rem;
+}
+
+.bonusimg {
+    margin: 2rem;
 }

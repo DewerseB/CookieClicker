@@ -14,7 +14,7 @@
 		<section class="score">
 			<div class="btn">
                 <label id="score" for="click"></label>
-				<input type="button" value="click" id="click">
+				<input type="image" src="./assets/img/unicorn-logo.png" class="logo" id="click">
 			</div>
 		</section>
 
@@ -27,12 +27,16 @@
 				<input type="button" value="Score multiplier: 1" id="multiplier">
                 <label id="m-cost" for="multiplier"></label>
             </div>
-            <div class="btn">
-				<input type="button" value="200% score for 30s" id="bonus">
-                <label id="b-cost" for="bonus">Cost 1000 points</label>
-			</div>
 		</section>    
 
-    <script src="./assets/js/score.js"></script>
+		<section class="bonus">
+			<div class="btn">
+				<input type="button" value="200% score for 30s" id="bonus">
+				<label id="b-cost" for="bonus">Cost 1000 points</label>
+				<img src="./assets/img/unicorn-bonus.png" alt="bonus up">
+			</div>
+		</section>
+
+	<script src="./assets/js/score.js"></script>
 </body>
 </html>

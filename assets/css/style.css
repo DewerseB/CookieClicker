@@ -1,15 +1,30 @@
+body {
+    background-image: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
+}
+
+@media (pointer: fine) {
+    .logo:hover {
+        transform: scale(1.1);
+    }
+}
+.logo:active {
+    -webkit-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+}
+
 section.score {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 5rem;
+    margin: 2rem;
 }
 
 section.upgrades {
     display: flex;
     justify-content: space-evenly;
-    margin: 5rem;
+    margin: 2rem;
 }
 
 div.btn {

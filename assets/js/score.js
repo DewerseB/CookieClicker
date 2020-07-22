@@ -19,6 +19,7 @@ if (window.localStorage.length === 0) {
     localStorage.setItem('auto', '0');
     localStorage.setItem('multiplier', '0');
 }
+bonusBtn.disabled = false;
 refreshDisplay();
 setInterval(autoClick, 1000);
 
@@ -39,7 +40,7 @@ function refreshDisplay() {
 
 
 /**
- * Check if an upgrade is not affordable.
+ * Check if an upgrade is NOT affordable.
  * 
  * @param {string} upgradeName the name of the upgrade
  * 
@@ -124,6 +125,7 @@ function buyMultiplier() {
 function buyBonus() {
     pay(bonusPrice);
     isBonusActive = true;
+    bonusBtn.disabled = true;
     refreshDisplay();
     interval = setInterval(bonusTimer, 1000);
 }
@@ -135,6 +137,7 @@ function bonusTimer() {
     } else {
         bonusTime = 30;
         isBonusActive = false;
+        bonusBtn.disabled = false;
         clearInterval(interval);
         bonusBtn.value = "200% score for 30s";
     }

@@ -1,8 +1,9 @@
 # CookieClicker
+<img src="https://dewerseb.github.io/CookieClicker/assets/img/unicorn-logo.png">
 
 - Pojet de groupe qui a débuté le 20/07/2020 
 - Deadline 22/07/2020 17h
-- Projet publé sur la page: ()
+- Projet publé sur la page: [ici](https://dewerseb.github.io/CookieClicker/index.html)
 
 # Type de défi: 
 Consolidation

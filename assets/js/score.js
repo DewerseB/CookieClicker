@@ -31,7 +31,7 @@ setInterval(autoClick, 1000);
 // Core functions
 
 /**
- * Calls increaseScore() an amount of time equals to the number of autoclick upgrade to simulate autoclicks.
+ * Calls increaseScore() an amount of times equal to the number of autoclick upgrades to simulate autoclicks.
  */
 function autoClick() {
     let auto = localStorage.getItem('auto');
@@ -56,7 +56,7 @@ function increaseScore() {
 }
 
 /**
- * Buys an autoclick upgrade and decrease the score by the price.
+ * Buys an autoclick upgrade and decreases the score by the price.
  * Called by a click on the 'auto' button.
  */
 function buyAuto() {
@@ -94,7 +94,7 @@ function buyBonus() {
 
 /**
  * Decreases the bonus remaining time and updates the display on the button.
- * Stops the bonus by calling stopBonus() when bonusTime reachs 0.
+ * Stops the bonus by calling stopBonus() when bonusTime reaches 0.
  */
 function bonusTimer() {
     if (bonusTime > 0) {
@@ -107,7 +107,7 @@ function bonusTimer() {
 }
 
 /**
- * Resets the game by stopping the bonus and settings all the variables
+ * Resets the game by stopping the bonus and setting all the variables
  * in the local storage to 0.
  */
 function reset() {

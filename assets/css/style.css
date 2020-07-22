@@ -1,5 +1,10 @@
 body {
     background-image: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
+    font-family: 'Indie Flower', cursive;
+}
+
+input{
+    font-family: 'Indie Flower', cursive;
 }
 
 .logo {

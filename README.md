@@ -2,7 +2,7 @@
 
 - Pojet de groupe qui a débuté le 20/07/2020 
 - Deadline 22/07/2020 17h
-- Projet publé sur la page: (https://dewerseb.github.io/CookieClicker/index.html)
+- Projet publé sur la page: [ici](https://dewerseb.github.io/CookieClicker/index.html)
 
 # Type de défi: 
 Consolidation

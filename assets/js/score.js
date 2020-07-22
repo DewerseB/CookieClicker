@@ -41,7 +41,7 @@ function autoClick() {
 }
 
 /**
- * Increase the score based on the multiplier value, and the bonus if activated.
+ * Increases the score based on the multiplier value, and the bonus if activated.
  * Used by the user when clicking the unicorn and by the autoClick().
  */
 function increaseScore() {
@@ -56,7 +56,7 @@ function increaseScore() {
 }
 
 /**
- * Buy an autoclick upgrade and decrease the score by the price.
+ * Buys an autoclick upgrade and decrease the score by the price.
  * Called by a click on the 'auto' button.
  */
 function buyAuto() {
@@ -68,7 +68,7 @@ function buyAuto() {
 }
 
 /**
- * Buy a multiplier upgrade and decrease the score by the price.
+ * Buys a multiplier upgrade and decreases the score by the price.
  * Called by a click on the 'multiplier' button.
  */
 function buyMultiplier() {
@@ -80,7 +80,7 @@ function buyMultiplier() {
 }
 
 /**
- * Activates the bonus and the bonus animation, and decrease the score by the price.
+ * Activates the bonus and the bonus animation, and decreases the score by the price.
  * Calls bonusTimer() every second.
  * Called by a click on the 'bonus' button.
  */
@@ -93,7 +93,7 @@ function buyBonus() {
 }
 
 /**
- * Decreases the bonus remaining time and update the display on the button.
+ * Decreases the bonus remaining time and updates the display on the button.
  * Stops the bonus by calling stopBonus() when bonusTime reachs 0.
  */
 function bonusTimer() {

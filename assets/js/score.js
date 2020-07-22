@@ -35,7 +35,7 @@ function refreshDisplay() {
     multiplierBtn.value = 'Bonus multiplier: ' + localStorage.getItem('multiplier');
     multiplierBtn.disabled = isNotAffordable('multiplier');
     document.getElementById('m-cost').innerHTML = 'Cost ' + getCost(localStorage.getItem('multiplier')) + ' point(s)';
-    parseInt(localStorage.getItem('score'), 10) >= bonusPrice ? bonusBtn.disabled = false : bonusBtn.disabled = true;
+    (parseInt(localStorage.getItem('score'), 10) >= bonusPrice && !isBonusActive) ? bonusBtn.disabled = false : bonusBtn.disabled = true;
 }
 
 
@@ -125,7 +125,6 @@ function buyMultiplier() {
 function buyBonus() {
     pay(bonusPrice);
     isBonusActive = true;
-    bonusBtn.disabled = true;
     refreshDisplay();
     interval = setInterval(bonusTimer, 1000);
 }
@@ -133,7 +132,7 @@ function buyBonus() {
 function bonusTimer() {
     if (bonusTime > 0) {
         bonusTime--;
-        bonusBtn.value = bonusTime + " seconds!"
+        bonusBtn.value = bonusTime + " seconds remaining!"
     } else {
         bonusTime = 30;
         isBonusActive = false;

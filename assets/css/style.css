@@ -33,3 +33,11 @@ div.btn {
     justify-content: center;
     align-items: center;
 }
+
+label.cost {
+    background-color: white;
+    padding: 0.2rem;
+    border: 0.05rem solid black;
+    border-top: none;
+    border-radius: 0 0 0.5rem 0.5rem;
+}

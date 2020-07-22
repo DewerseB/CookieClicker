@@ -136,7 +136,7 @@ function refreshDisplay() {
 }
 
 /**
- * Check if an upgrade is NOT affordable.
+ * Checks if an upgrade is NOT affordable.
  * 
  * @param {string} upgradeName the name of the upgrade
  * 

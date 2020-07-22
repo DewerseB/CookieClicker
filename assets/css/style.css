@@ -2,6 +2,10 @@ body {
     background-image: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
 }
 
+.logo {
+    outline: none;
+}
+
 @media (pointer: fine) {
     .logo:hover {
         transform: scale(1.1);
@@ -27,12 +31,6 @@ body {
     font-size: 3rem;
     padding: 0.5rem 1rem;
 }
-  
-  @keyframes rotation {
-    from { transform: rotate(0deg);}
-
-    to {transform: rotate(359deg);}
-  }
   
 section.score {
     display: flex;
@@ -69,6 +67,7 @@ div {
     width: 10rem;
     border-radius: 0.5rem;
     padding: 0.4rem 0;
+    outline: none;
 }
 
 .btn:active {
@@ -107,4 +106,20 @@ div {
     color: white;
     border-radius: 0.5rem;
     padding: 0.4rem;
+    outline: none;
+}
+
+.dropdown {
+    position: absolute;
+    display: inline-block;
+}
+  
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 2rem;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
 }

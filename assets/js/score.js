@@ -12,6 +12,7 @@ clickBtn.addEventListener('click', increaseScore);
 autoBtn.addEventListener('click', buyAuto);
 multiplierBtn.addEventListener('click', buyMultiplier);
 bonusBtn.addEventListener('click', buyBonus);
+document.getElementById('reset').addEventListener('click', reset);
 
 // Initialization
 if (window.localStorage.length === 0) {
@@ -137,10 +138,21 @@ function bonusTimer() {
     } else {
         bonusTime = 30;
         isBonusActive = false;
-        bonusBtn.disabled = false;
         document.getElementById("bonus-img").classList.remove("lic-anim");
         clearInterval(interval);
         bonusBtn.value = "200% score for 30s";
         refreshDisplay();
     }
+}
+
+function reset() {
+    bonusTime = 30;
+    isBonusActive = false;
+    document.getElementById("bonus-img").classList.remove("lic-anim");
+    clearInterval(interval);
+    bonusBtn.value = "200% score for 30s";
+    localStorage.setItem('score', '0');
+    localStorage.setItem('auto', '0');
+    localStorage.setItem('multiplier', '0');
+    refreshDisplay();
 }

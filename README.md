@@ -1,4 +1,5 @@
 # CookieClicker
+<img src="https://dewerseb.github.io/CookieClicker/assets/img/unicorn-logo.png">
 
 - Pojet de groupe qui a débuté le 20/07/2020 
 - Deadline 22/07/2020 17h

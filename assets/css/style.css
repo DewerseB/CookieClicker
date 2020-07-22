@@ -27,8 +27,6 @@ body {
     font-size: 3rem;
     padding: 0.5rem 1rem;
 }
-
-  }
   
   @keyframes rotation {
     from { transform: rotate(0deg);}

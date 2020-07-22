@@ -101,4 +101,12 @@ div {
     from  {transform: scale(1);}
 
     to {transform: scale(1.2);}
-  }
+}
+
+.resetbtn {
+    position: absolute;
+    background-color: #ff0081;
+    color: white;
+    border-radius: 0.5rem;
+    padding: 0.4rem;
+}

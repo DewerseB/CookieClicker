@@ -1,10 +1,14 @@
 body {
     background-image: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
     font-family: 'Indie Flower', cursive;
+    font-size: 1.1rem;
+    font-weight: 900;
 }
 
 input{
     font-family: 'Indie Flower', cursive;
+    font-size: 1.1rem;
+    font-weight: 900;
 }
 
 .logo {
@@ -69,7 +73,7 @@ div {
 .btn {
     background-color: #ff0081;
     color: white;
-    width: 10rem;
+    width: 11rem;
     border-radius: 0.5rem;
     padding: 0.4rem 0;
     cursor: pointer;
@@ -88,7 +92,7 @@ div {
 .cost {
     background-color: #ff0080bd;
     color: white;
-    width: 9rem;
+    width: 10rem;
     text-align: center;
     padding: 0.2rem 0;
     border: 0.05rem solid black;
@@ -124,7 +128,7 @@ div {
 .dropdown-content {
     display: none;
     position: absolute;
-    top: 2rem;
+    top: 2.7rem;
 }
 
 .dropdown:hover .dropdown-content {
